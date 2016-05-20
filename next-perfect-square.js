@@ -29,7 +29,7 @@ function findNextSquare(sq) {
 // Because we are checking for a perfect square, we can eliminate the expensive, wrapping if statement.
 // Check if the square root of the input is a whole number, does it divide evenly by one?
 // We then know the next perfect square will be the ^2 of sq + 1.
-// I avoided Math.pow(sq + 1, 2);  Not sure if (sq + 1) * (sq * 1) is more efficient or not
+// I avoided Math.pow(sq + 1, 2);  Not sure if (sq + 1) * (sq * 1) is more efficient.
 
 function findNextSquare(sq) {
   sq = Math.sqrt(sq);
