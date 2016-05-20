@@ -13,12 +13,12 @@
 // First I built the signature array by adding the previous 3 elements
 // Then I returned signature.slice(0,n) inorder to handle n <= 1
 
-function tribonacci(signature, n) {
+const tribonacci = (signature, n) => {
   for(let i = 3; i < n; i++) {
     signature[i] = signature[i - 1] + signature[i - 2] + signature[i - 3];
   }
   return signature.slice(0,n);
-}
+};
 
 console.log(tribonacci([1,1,1],10)); // => [1,1,1,3,5,9,17,31,57,105]
 console.log(tribonacci([0,0,1],10)); // => [0,0,1,1,2,4,7,13,24,44]
