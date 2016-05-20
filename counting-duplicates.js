@@ -4,6 +4,10 @@
 // that occur more than once in the given string.
 // The given string can be assumed to contain only uppercase and lowercase alphabets.
 
+// First I chose to normalize the input.
+// Then I mapped the input to the holder object, keeping track of how many time seach letter appeared
+// Then I looped through the keys of the holder object, checking to see which key had a value greater than 1.
+
 const duplicateCount = (string) => {
   let holder = {},
     normal = string.toLowerCase().split(''),
