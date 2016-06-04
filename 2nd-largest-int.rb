@@ -29,11 +29,8 @@ def find_2nd_largest(arr)
   secondHighest === highest ? nil : secondHighest
 end
 
-def find_2nd_largest2(arr)
-  arr.uniq.reject {|num| num.is_a?(String)}.sort().reverse()[1]
-end
+
 
 
 p find_2nd_largest([1,2,3,'4',5,6,7])
-p find_2nd_largest2([1,2,3,'4',5,6,7])
-p find_2nd_largest2([1,1,1,1,1,1,1])
+p find_2nd_largest([1,1,1])
