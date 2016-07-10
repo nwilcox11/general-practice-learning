@@ -7,29 +7,16 @@ const squareIt = (n) => {
   return n * n;
 };
 
-const squareOfSum = (max) => {
-  let sum = 0, sumSq = 0;
+const assembleSquares = (max) => {
+  let squareOfSum = 0,
+      sumOfSquares = 0;
 
   for(let i = 1; i <= max; i++) {
-    sum += i;
+    squareOfSum += i;
+    sumOfSquares += squareIt(i);
   }
-  sumSq = squareIt(sum);
-
-  return sumSq;
+  return squareIt(squareOfSum) - sumOfSquares;
 };
 
-const sumOfSquares = (max) => {
-  let sum = 0;
-
-  for(let i = 1; i <= max; i++) {
-    sum += squareIt(i);
-  }
-  return sum;
-};
-
-const solution = (squareOfSumMax, sumOfSquaresMax) => {
-  return squareOfSum(squareOfSumMax) - sumOfSquares(sumOfSquaresMax);
-};
-
-console.log(solution(10,10));
+console.log(assembleSquares(100));
 // 25164150
