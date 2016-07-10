@@ -7,10 +7,10 @@ const squareIt = (n) => {
   return n * n;
 };
 
-const squareOfSum = () => {
+const squareOfSum = (max) => {
   let sum = 0, sumSq = 0;
 
-  for(let i = 1; i <= 100; i++) {
+  for(let i = 1; i <= max; i++) {
     sum += i;
   }
   sumSq = squareIt(sum);
@@ -18,18 +18,18 @@ const squareOfSum = () => {
   return sumSq;
 };
 
-const sumOfSquares = () => {
+const sumOfSquares = (max) => {
   let sum = 0;
 
-  for(let i = 1; i <= 100; i++) {
+  for(let i = 1; i <= max; i++) {
     sum += squareIt(i);
   }
   return sum;
 };
 
-const solution = () => {
-  return squareOfSum() - sumOfSquares();
+const solution = (squareOfSumMax, sumOfSquaresMax) => {
+  return squareOfSum(squareOfSumMax) - sumOfSquares(sumOfSquaresMax);
 };
 
-console.log(solution());
+console.log(solution(10,10));
 // 25164150
