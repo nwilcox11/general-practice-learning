@@ -30,7 +30,7 @@ class Stack {
   }
 }
 
-const s2 = new Stack;
-s2.add('a').add('b').add('c').add('d');
+const s1 = new Stack;
+s1.add('a').add('b').add('c').add('d');
 console.log(s2.remove());
 console.log(s2);

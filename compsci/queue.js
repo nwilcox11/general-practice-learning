@@ -33,3 +33,8 @@ class Queue {
     }
   }
 }
+
+const q1 = new Queue;
+q1.add('a').add('b').add('c').add('d');
+console.log(q1.remove());
+console.log(q1);
