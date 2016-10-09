@@ -25,7 +25,7 @@ Returned objects must have the following structure:
 
 //https://www.codewars.com/kata/count-addresses-grouped-by-state/train/javascript
 
-// returns an object counting occurances of each state
+// returns an object counting occurrences of each state
 function getStateCount(objectArray) {
   let stateCounts = {};
 
