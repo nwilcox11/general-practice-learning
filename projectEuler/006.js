@@ -3,11 +3,9 @@
 // Find the difference between the sum of the squares of the first one hundred
 // natural numbers and the square of the sum.
 
-const squareIt = (n) => {
-  return n * n;
-};
+const squareIt = n => n * n;
 
-const assembleSquares = (max) => {
+const assembleSquares = max => {
   let squareOfSum = 0,
       sumOfSquares = 0;
 
