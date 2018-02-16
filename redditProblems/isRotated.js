@@ -1,3 +1,4 @@
+const assert = require('assert');
 const test = [1,2,3,5,6,7,8];
 const test2 = [1, 2, 3, 4, 5]
 const rotated = rotate(test2);
@@ -13,11 +14,13 @@ function rotate(arr) {
     return copy;
 }
 
- //  O(n) 
+ //  O(n) --> depends on toString() implementation
 function isRotated(array, rotatedArray) {
     if (array.length === rotatedArray.length) {
         return (rotate(array).toString() === rotatedArray.toString());
     }
     return false;
 }
-console.log(isRotated(test2, rotated))
+
+assert.deepEqual(isRotated(test2, rotated), true);
+assert.deepEqual(isRotated(test, rotate(test2)), false);
