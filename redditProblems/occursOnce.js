@@ -15,14 +15,12 @@ function getOccurances(array) {
  * Find the only element in an array that only occurs once.
  * Implies that there is only ONE element that occurs once **/
 function occursOnce(array) {
-    let result;
     const occurances = getOccurances(array);
     const occurancesKeys = Object.keys(occurances);
 
     for (let i = 0; i < occurancesKeys.length; i++) {
         if (occurances[occurancesKeys[i]] === 1) {
-            result = occurancesKeys[i];
-            break; // because we are only looking for once element we can break once we find it
+            return occurancesKeys[i]; // return first occurance since we are only looking for one
         }
     }
     return result;
