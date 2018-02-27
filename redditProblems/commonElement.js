@@ -21,9 +21,32 @@ function findCommon(array1, array2) {
 
     return mapIterable.filter(num => {
         if (arrayMap[num] === arrayMap2[num]) {
-            return arrayMap[num];
+            return num;
         }
     });
 }
+
+assert.deepEqual(findCommon(test1, test2), [1,2,3,4,5,9]);
+
+function createMap(array) {
+    return array.reduce((map, num) => {
+        map.set(num, num);
+        return map;
+    }, new Map())
+}
+
 /** Using js Maps **/
-assert.deepEqual(findCommon(test1, test2), [1,2,3,4,5,9])
+function findCommonInts(array, array2) {
+    const arrayMap = createMap(array);
+    const arrayMap2 = createMap(array2);
+    let common = [];
+    /** we can iterate Maps with for...of **/
+    for(let key of arrayMap.keys()) {
+        if (arrayMap2.has(key)) {
+            common.push(arrayMap2.get(key))
+        }
+    }
+    return common;
+}
+
+assert.deepEqual(findCommonInts(test1, test2), [1,2,3,4,5,9]);
