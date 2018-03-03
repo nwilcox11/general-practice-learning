@@ -17,8 +17,13 @@ function binarySearcher(array) {
     let sorted = array.sort((a, b) => a - b);
     function rotatedSearch(target) {
         let arrayToSearch = [...sorted];
-        while (sorted.length) {
+        while (arrayToSearch.length) {
             let pivot = Math.floor(arrayToSearch.length / 2);
+
+            if (arrayToSearch.length === 1 && arrayToSearch[pivot] !== target) {
+                return 'Not Found'
+            }
+
             if (arrayToSearch[pivot] === target) {
                 return arrayToSearch[pivot];
             } else if (arrayToSearch[pivot] > target) {
@@ -33,7 +38,8 @@ function binarySearcher(array) {
 
 const rotatedSearch = binarySearcher(test);
 
-assert.equal(rotatedSearch(4), 4);
+assert.equal(rotatedSearch(1), 1);
+assert.equal(rotatedSearch(4), 'Not Found');
 
 const test2 = rotate([1,2,3,4,5,6,7,8,9,10]);
 
@@ -42,3 +48,5 @@ const test2 = rotate([1,2,3,4,5,6,7,8,9,10]);
 function binarySearchRotated(target, array) {
 
 }
+
+// binarySearchRotated(2,test2)
