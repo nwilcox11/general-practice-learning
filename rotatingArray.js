@@ -24,6 +24,13 @@ function rotateRight(arr, rotations) {
     return copy;
 }
 
-console.log(rotateLeft(arr, 3));
-console.log(rotateRight(arr, 3));
-console.log(arr);
+module.exports = function rotate(arr) {
+  let mid = Math.floor((arr.length - 1) / 2);
+  let copy = arr.slice(0); // do not mutate
+  while(mid > 0) {
+    let picked = copy.shift(); // picks last element
+    copy.push(picked); // puts it on the front of the array
+    mid--;
+  }
+  return copy;
+}
