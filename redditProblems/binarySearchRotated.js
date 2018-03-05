@@ -85,3 +85,38 @@ assert.equal(binarySearchRotated(12, test2), 12);
 assert.equal(binarySearchRotated(7, test2), 7);
 assert.equal(binarySearchRotated(9, test2), 9);
 assert.equal(binarySearchRotated(100, test2), 'Not Found');
+
+/** Better **/
+function rotatedBinSearch(target, array) {
+    let high = array.length;
+    let low = 0;
+    let pivot;
+
+    while(high >= low) {
+        pivot = Math.floor((high + low) / 2);
+
+        if (array[pivot] === target) {
+            return array[pivot]
+        } else if (array[low] < array[pivot]) {
+            if (array[low] <= target && target < array[pivot]) {
+                high = pivot - 1; 
+            } else {
+                low = pivot + 1;
+            }
+        } else {
+            if (array[high] <= target && target < array[pivot]) {
+                low = pivot + 1;
+            } else {
+                high = pivot - 1;
+            }
+        }
+    }
+    return 'Not Found';
+}
+
+assert.equal(rotatedBinSearch(1, test2), 1);
+assert.equal(rotatedBinSearch(4, test2), 4);
+assert.equal(rotatedBinSearch(12, test2), 12);
+assert.equal(rotatedBinSearch(7, test2), 7);
+assert.equal(rotatedBinSearch(9, test2), 9);
+assert.equal(rotatedBinSearch(100, test2), 'Not Found');
