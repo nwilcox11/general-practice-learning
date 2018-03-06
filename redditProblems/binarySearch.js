@@ -25,17 +25,18 @@ assert.equal(binarySearch(6, test), 6);
 
 function recursiveBinarySearch(target, low, high, array) {
     let mid = Math.floor((high + low) / 2);
-    let guess = array[mid];
 
     if (high < low) {
         return 'Not Here'
     }
 
-    if (guess === target) {
-        return guess;
-    } else if (guess < target) {
-        return recursiveBinarySearch(target, mid + 1, array.length - 1, array);
+    if (array[mid] === target) {
+        return array[mid];
+    } else if (array[mid] < target) {
+        /** search in the right half of array **/
+        return recursiveBinarySearch(target, mid + 1, high, array);
     } else {
+        /** search in left half of array **/
         return recursiveBinarySearch(target, low, mid - 1, array);
     }
 }

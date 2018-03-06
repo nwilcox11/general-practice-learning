@@ -121,7 +121,11 @@ assert.equal(rotatedBinSearch(7, test2), 7);
 assert.equal(rotatedBinSearch(9, test2), 9);
 assert.equal(rotatedBinSearch(100, test2), 'Not Found');
 
-/** Recursive rotated binary search -- O(log n) -- Best? **/
+/** 
+ * Recursive rotated binary search -- O(log n) -- Best? 
+ * Array can be rotated any number of turns, no duplicates, sorted in ascending order
+ * **/
+
 /**
  * Grab middle element, if its target return
  * Check to see if left half is sorted, once we know which half is sorted we can check which half target is in
