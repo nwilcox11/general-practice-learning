@@ -127,3 +127,4 @@ assert.equal(recBinSearch(12,  0, test2.length - 1,test2), 12);
 assert.equal(recBinSearch(7,  0, test3.length - 1, test3), 7);
 assert.equal(recBinSearch(9,  0, test4.length - 1, test4), 9);
 assert.equal(recBinSearch(100,  0, test2.length - 1, test2), 'Not Found');
+assert.equal(recBinSearch(2, 0, [1,2].length - 1, [1,2]));
