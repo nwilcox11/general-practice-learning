@@ -8,7 +8,7 @@ const assert = require('assert');
 /** start at each end and check each char 
  * O(n) **/
 function isPalindrome(string) {
-    let normalized = string.replace(/\s/g, '').toLowerCase(); // removes casing and spaces
+    const normalized = string.replace(/\s/g, '').toLowerCase(); // removes casing and spaces
     let start = 0;
     let end = normalized.length - 1;
 
@@ -29,9 +29,30 @@ assert.equal(isPalindrome('nick'), false);
 assert.equal(isPalindrome('wnickw'), false);
 assert.equal(isPalindrome('Al lets Della call Ed Stella'), true);
 assert.equal(isPalindrome('Ah Satan sees Natasha'), true);
+
 /**
- * recursive next
+ * recursive palindrome
  * **/
+
+function recursivePalindrome(string) {
+    if (string.length <= 1) {
+        return true
+    }
+    string = string.replace(/\s/g, '').toLowerCase();
+    /** check first and last characters **/
+    if (string.slice(0, 1) === string.slice(-1)) {
+        /** return middle characters **/
+        return recursivePalindrome(string.slice(1, -1))
+    }
+    return false;
+}   
+assert.equal(recursivePalindrome('racecar'), true);
+assert.equal(recursivePalindrome('madam'), true);
+assert.equal(recursivePalindrome('civic'), true);
+assert.equal(recursivePalindrome('nick'), false);
+assert.equal(recursivePalindrome('wnickw'), false);
+assert.equal(recursivePalindrome('Al lets Della call Ed Stella'), true);
+assert.equal(recursivePalindrome('Ah Satan sees Natasha'), true);
 
  /**
   * O(n/2)
