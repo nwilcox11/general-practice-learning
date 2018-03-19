@@ -57,3 +57,25 @@ assert.equal(recursivePalindrome('Ah Satan sees Natasha'), true);
  /**
   * O(n/2)
   * **/
+
+function halfIteration(string) {
+    string = string.replace(/\s/g, '').toLowerCase();
+    /** iterate through half of the characters **/
+    let stop = Math.floor(string.length / 2);
+    for(let i = 0; i < stop; i++) {
+        /** find the second half of the chars by subtracting current iterator by string length **/
+        if (string[i] !== string[(string.length - 1) - i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+assert.equal(halfIteration('racecar'), true);
+assert.equal(halfIteration('madam'), true);
+assert.equal(halfIteration('civic'), true);
+assert.equal(halfIteration('nick'), false);
+assert.equal(halfIteration('wnickw'), false);
+assert.equal(halfIteration('Al lets Della call Ed Stella'), true);
+assert.equal(halfIteration('Ah Satan sees Natasha'), true);
+
