@@ -9,9 +9,16 @@
 // right child = 2i + 2
 
 const test = [16,8,10,14,7,9,3,2,4,1];
-
-/** returns max heap from unordered array **/
-function buildMaxHeap() { }
+const test3 = [11,13,5,6,7,12]
+/** returns max heap from unordered array, does not modify original array **/
+function buildMaxHeap(array) {
+    let maxHeap = [...array];
+    let start = Math.floor((maxHeap.length - 1) / 2);
+    for (let i = start; i >= 0; i--) {
+        maxHeapify(maxHeap, i);
+    }
+    return maxHeap
+}
 /** perform one 'swap' or correction of a heap property **/
 function maxHeapify(array, index) {
     let largest = index; // set largest to index
@@ -43,5 +50,3 @@ function extractMax() { }
 function heapSort() { }
 /** insert into the priority queue **/
 function insert() { }
-
-console.log(maxHeapify(test, 1));
