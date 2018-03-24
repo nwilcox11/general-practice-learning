@@ -44,8 +44,24 @@ function maxHeapify(array, index) {
     }
     return array;
 }
-/** returns and removes the max value of the max heap **/
-function extractMax() { }
+/** 
+ * returns and removes the max value of the max heap, must also rebalance the max heap
+ * This is done without js built-ins (pop or shift)
+ * O(log n) -> n is heap size
+ * **/
+function extractMax(maxHeap) {
+    let size = Math.floor(maxHeap.length - 1);
+    /** max is always first index of maxHeap **/
+    let max = maxHeap[0];
+    /** swap the last element with the 'removed' first element **/
+    maxHeap[0] = maxHeap[size];
+    /** decrement the array size to remove the first element **/
+    maxHeap.length -= 1; 
+    /** run maxHeapify to re-balance the maxHeap **/
+    maxHeapify(maxHeap, 0);
+    /** return max **/
+    return max;
+}
 /** returns a sorted array using heap sort O(n log n) **/
 function heapSort() { }
 /** insert into the priority queue **/
