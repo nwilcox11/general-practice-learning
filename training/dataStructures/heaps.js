@@ -63,8 +63,6 @@ function extractMax(maxHeap) {
     /** return max **/
     return max;
 }
-/** returns a sorted array using heap sort O(n log n) **/
-function heapSort() { }
 /** returns parent node index of passed index **/
 function parent(index) {
     return Math.floor((index - 1) / 2);
@@ -84,4 +82,15 @@ function insert(maxHeap, node) {
         maxHeapify(maxHeap, i);
     }
     return maxHeap;
+}
+/** returns a sorted array using heap sort O(n log n) **/
+function heapSort(maxHeap) {
+    let size = Math.floor(maxHeap.length - 1);
+    let result = [];
+
+    for (let i = size; i >= 0; i--) {
+        result.push(extractMax(maxHeap));
+    }
+    return result;
+    
 }
