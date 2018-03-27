@@ -95,6 +95,9 @@ function heapSort(maxHeap) {
 
 class PriorityQueue {
     constructor(array) {
+        if (array.constructor !== Array) {
+            throw 'Passed Argument is not an array';
+        }
         this.array = array;
     }
 
