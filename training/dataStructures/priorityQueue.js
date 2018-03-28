@@ -5,6 +5,12 @@ class PriorityQueue {
         }
         this.array = array;
     }
+    getLeftChildIndex(index) {
+        return (2 * index) + 1;
+    }
+    getRightChildIndex(index) {
+        return (2 * index) + 2
+    }
     buildMaxHeap() {
         let start = Math.floor((this.array.length - 1) / 2);
         for (let i = start; i >= 0; i--) {
@@ -14,8 +20,8 @@ class PriorityQueue {
     }
     maxHeapify(array, index) {
         let largest = index; // set largest to index
-        let leftIndex = (2 * index) + 1;
-        let rightIndex = (2 * index) + 2;
+        let leftIndex = this.getLeftChildIndex(index);
+        let rightIndex = this.getRightChildIndex(index);
         let size = array.length - 1;
         let temp;
         /** if left index is in heap and element at left is > than element at root/index **/
