@@ -20,6 +20,38 @@ function buildMaxHeap(array) {
     }
     return maxHeap
 }
+/** returns min heap from unordered array, does not modify original array **/
+function buildMinHeap(array) {
+    let minHeap = [...array];
+    let start = Math.floor((minHeap.length - 1) / 2);
+    for (let i = start; i >= 0; i--) {
+        minHeapify(minHeap, i);
+    }
+    return minHeap;
+}
+/** perform one swap or correction of a heap property 
+ * min heap -- parents are lesser than each of its children **/
+function minHeapify(array, index) {
+    let lowest = index;
+    let leftIndex = (2 * index) + 1;
+    let rightIndex = (2 * index) + 2;
+    let size = array.length - 1;
+    let temp;
+    // if we have a value that is less than index / root, set lowest to that index
+    if (leftIndex <= size && array[leftIndex] < array[lowest]) {
+        lowest = leftIndex;
+    }
+    if (rightIndex <= size && array[rightIndex] < array[lowest]) {
+        lowest = rightIndex;
+    }
+    if (lowest !== index) {
+        temp = array[index];
+        array[index] = array[lowest];
+        array[lowest] = temp;
+        minHeapify(array, lowest);
+    }
+    return array;
+}
 /** perform one 'swap' or correction of a heap property **/
 function maxHeapify(array, index) {
     let largest = index; // set largest to index
@@ -92,3 +124,8 @@ function heapSort(maxHeap) {
     }
     return result;
 }
+
+const minHeap = buildMinHeap(test);
+const maxHeap = buildMaxHeap(test);
+console.log(`MIN_HEAP: ${minHeap}`);
+console.log(`MAX_HEAP: ${maxHeap}`);
