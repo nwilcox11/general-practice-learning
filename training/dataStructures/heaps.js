@@ -125,7 +125,20 @@ function heapSort(maxHeap) {
     return result;
 }
 
+function maxHeapToMin(maxHeap) {
+    /** dont mutate the original maxHeap **/
+    let minHeap = [...maxHeap];
+    let start = Math.floor((maxHeap.length - 1) / 2);
+    for (let i = start; i >= 0; i--) {
+        /** Call max heapify at each index to fix each sub heap **/
+        minHeapify(minHeap, i);
+    }
+    return minHeap;
+}
+
 const minHeap = buildMinHeap(test);
 const maxHeap = buildMaxHeap(test);
 console.log(`MIN_HEAP: ${minHeap}`);
 console.log(`MAX_HEAP: ${maxHeap}`);
+console.log(`MIN_HEAP from MAX: ${maxHeapToMin(maxHeap)}`)
+
