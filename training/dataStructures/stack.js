@@ -4,27 +4,42 @@
  * pop - O(1)
  * peek - O(1)
  * **/
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
 class Stack {
     constructor() {
-        this.memory = {};
-        this.position = -1;
+        this.head = null;
+        this.length = 0;
     }
-    /** adding an item to the stack **/
+    /** adding an item to the top of the stack **/
     push(value) {
-        this.position++;
-        this.memory[this.position] = value;
+        const node = new Node(value);
+        /** setting node.next to the current head / rest of list **/
+        node.next = this.head;
+        /** replace current head with new node, inserting new node at head **/
+        this.head = node;
+        this.length++;
         return this;
     }
     /** removing item from top of stack **/
     pop() {
-        const popped = this.memory[this.position];
-        delete this.memory[this.position];
-        this.position--;
-        return popped
+        /** if no head stack is empty, do nothing **/
+        if (!this.head) {
+            return;
+        }
+        const { value } = this.head;
+        const { next } = this.head;
+        this.head = next;
+        this.length--;
+        return value;
     }
     /** view item at top of stack without removing it **/
     peek() {
-        return this.memory[this.position];
+        return this.head.value;
     }
 }
 
