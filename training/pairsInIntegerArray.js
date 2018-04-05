@@ -37,3 +37,20 @@ function pairInArrayLinearTime(array) {
 assert.deepEqual(pairInArrayLinearTime(test1), [ [ 5, 5 ], [ 3, 7 ], [ 6, 4 ], [ 1, 9 ] ])
 assert.deepEqual(pairInArray(test1), [ [ 1, 9 ], [ 3, 7 ], [ 5, 5 ], [6,4] ] )
 
+/**
+ * returns first index pair
+ * **/
+function twoSum(array, target) {
+    let map = {}
+    for (let i = 0; i < array.length; i++) {
+        let difference = target - array[i];
+        /** if our map has current array element as a key, return the value and the current index
+         * we found our pair **/
+        if (map.hasOwnProperty(difference)) {
+            return [map[difference], i]
+        }
+        /** add the array element as a key and its index to indicate we have seen the element **/
+        map[array[i]] = i;
+    }
+}
+
