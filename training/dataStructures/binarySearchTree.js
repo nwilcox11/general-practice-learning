@@ -1,8 +1,14 @@
 class Node {
-    constructor() {}
+    constructor(value) {
+        this.value = value;
+        this.right = null;
+        this.left = null;
+    }
 }
 class BinarySearchTree {
-    constructor() {}
+    constructor() {
+        this.root = null;
+    }
     insert() {}
     delete() {}
 }
