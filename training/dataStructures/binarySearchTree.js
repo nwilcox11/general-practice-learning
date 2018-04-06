@@ -9,7 +9,39 @@ class BinarySearchTree {
     constructor() {
         this.root = null;
     }
-    insert() {}
+    add(value) {
+        /** if we have no root, set new value to root **/
+        if (!this.root) {
+            this.root = new Node(value);;
+            return this;
+        }
+
+        let current = this.root;
+
+        while(true) {
+            /** if value is > current value we go right **/
+            if (value > current.value) {
+                /** if there is no right node, set current.right to node **/
+                if(!current.right) {
+                    current.right = new Node(value);
+                    return this;
+                }
+                /** set current to right node and continue traversing **/
+                current = current.right;
+            /** if value is < current.value we go left **/    
+            } else if (value < current.value) { 
+                if(!current.left) {
+                    current.left = new Node(value);
+                    return this;
+                }
+                /** set current to left node and continue traversing **/
+                current = current.left;
+                /** if value is the same do nothing **/
+            } else {
+                return this;
+            }
+        }
+    }
     delete() {}
 }
 
