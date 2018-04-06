@@ -42,6 +42,20 @@ class BinarySearchTree {
             }
         }
     }
+    /** depth first traversal **/
+    preorderTraversal(node, array) {
+        /** if we are at the end of a leaf with no children, return the array **/
+        if (!node) {
+            return array;
+        }
+        /** process node, then recursively move to the next **/
+        array.push(node.value);
+        /** process the left tree first **/
+        array = this.preorderTraversal(node.left, array);
+        /** then right tree **/
+        array = this.preorderTraversal(node.right, array);
+        return array;
+    }
     delete() {}
 }
 
