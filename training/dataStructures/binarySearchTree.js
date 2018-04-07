@@ -43,7 +43,7 @@ class BinarySearchTree {
         }
     }
     /** depth first traversal **/
-    preorderTraversal(node, array) {
+    preorderTraversal(node = this.root, array = []) {
         /** if we are at the end of a leaf with no children, return the array **/
         if (!node) {
             return array;
