@@ -43,7 +43,8 @@ class BinarySearchTree {
         }
     }
     /** depth first traversals **/
-    /** Traverse tree in order, we process the node we are currently on then move to its children **/
+    /** Traverse tree in order, we process the node we are currently on then move to its children 
+     * Deep copy of BST, process node, then its children **/
     preorderTraversal(node = this.root, array = []) {
         /** if we are at the end of a leaf with no children, return the array **/
         if (!node) {
@@ -52,22 +53,35 @@ class BinarySearchTree {
         /** process node, then recursively move to the next **/
         array.push(node.value);
         /** process the left tree first **/
-        array = this.preorderTraversal(node.left, array);
+        this.preorderTraversal(node.left, array);
         /** then right tree **/
-        array = this.preorderTraversal(node.right, array);
+        this.preorderTraversal(node.right, array);
         return array;
     }
-    /** process left subtree and then right subtree, returns sorted array **/
+    /** process left subtree and then right subtree, returns sorted array 
+     * Sorted List from BST**/
     inorderTraversal(node = this.root, array = []) {
         if (!node) {
             return array;
         }
         /** move to the left subtree first, we push onto the array when we reach a leaf node **/
-        array = this.inorderTraversal(node.left, array);
+        this.inorderTraversal(node.left, array);
         /** we do the processing of the node **/
         array.push(node.value);
         /** move to the right sub tree, repeat **/
-        array = this.inorderTraversal(node.right, array);
+        this.inorderTraversal(node.right, array);
+        return array;
+    }
+    /** visits all children in left and right subtrees before processing nodes, root will always be last 
+     * Deleting a BST, we process the children before the node itself
+     * **/
+    postorderTraversal(node = this.root, array = []) {
+        if(!node) {
+            return array;
+        }
+        this.postorderTraversal(node.left, array);
+        this.postorderTraversal(node.right, array);
+        array.push(node.value);
         return array;
     }
     delete() {}
