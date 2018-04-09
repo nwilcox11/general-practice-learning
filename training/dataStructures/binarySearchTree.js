@@ -1,3 +1,5 @@
+const Queue = require('./queue');
+
 class Node {
     constructor(value) {
         this.value = value;
@@ -84,7 +86,28 @@ class BinarySearchTree {
         array.push(node.value);
         return array;
     }
-    delete() {}
+    /** add values to the array by level
+     * we use a queue inorder to store references to the children of each node 
+     * Beacuse queue are FIFO we can visit the nodes at each level in order **/
+    breadthFirstTraverse() {
+        if (!this.root) {
+            return;
+        }
+        let queue = new Queue();
+        let array = [];
+        queue.enqueue(this.root);
+        while(queue.length) {
+            let current = queue.dequeue();
+            if (current.left) {
+                queue.enqueue(current.left)
+            }
+            if (current.right) {
+                queue.enqueue(current.right)
+            }
+            array.push(current.value);
+        }
+        return array;
+    }
 }
 
 module.exports = BinarySearchTree;
