@@ -44,6 +44,15 @@ class BinarySearchTree {
             }
         }
     }
+    /**
+     * Deleting a node with no children: simply remove the node from the tree.
+     * Deleting a node with one child: remove the node and replace it with its child.
+     * Deleting a node with two children: call the node to be deleted D. Do not delete D. 
+     * Instead, choose either its in-order predecessor node or its in-order successor node as replacement node E. 
+     * Copy the user values of E to D.[note 2] If E does not have a child simply remove E from its previous parent G. 
+     * If E has a child, say F, it is a right child. Replace E with F at E's parent.
+     * **/
+    delete(value) { }
     /** depth first traversals **/
     /** Traverse tree in order, we process the node we are currently on then move to its children 
      * Deep copy of BST, process node, then its children **/
