@@ -14,7 +14,7 @@ class BinarySearchTree {
     add(value) {
         /** if we have no root, set new value to root **/
         if (!this.root) {
-            this.root = new Node(value);;
+            this.root = new Node(value);
             return this;
         }
 
@@ -42,6 +42,40 @@ class BinarySearchTree {
             } else {
                 return this;
             }
+        }
+    }
+    recurAdd(value) {
+        /** base case -- the is no node in the current position **/
+        if(!this.root) {
+            this.root = new Node(value);
+            return this;
+        }
+        return this.insertNode(this.root, value);
+    }
+    insertNode(currentNode, value) {
+        /** if value to add is greater than current node **/
+        if (value > currentNode.value) {
+            /** we go right **/
+            if (!currentNode.right) {
+                /** if there is no right node, set new node to the right child **/
+                currentNode.right = new Node(value);
+                return this;
+            }
+            /** else recurse down to the right subtree **/
+            return this.insertNode(currentNode.right, value);
+            /** if value to add is less than current Node **/
+        } else if (value < currentNode.value) {
+            /** we go left **/
+            if (!currentNode.left) {
+                /** if there is no left node, set new node to the left child **/
+                currentNode.left = new Node(value);
+                return this;
+            }
+            /** else recurse down the left subtree **/
+            return this.insertNode(currentNode.left, value);
+        } else {
+            /** value is equal to currentNode, do nothing **/
+            return this;
         }
     }
     /**
