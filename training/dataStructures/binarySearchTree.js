@@ -1,4 +1,5 @@
 const Queue = require('./queue');
+const Stack = require('./stack');
 
 class Node {
     constructor(value) {
@@ -86,7 +87,34 @@ class BinarySearchTree {
      * Copy the user values of E to D.[note 2] If E does not have a child simply remove E from its previous parent G. 
      * If E has a child, say F, it is a right child. Replace E with F at E's parent.
      * **/
-    delete(value) { }
+    delete(value) {
+        if (!this.root) {
+            return;
+        }
+        let current = this.root;
+        let previous;
+        while(current) {
+            if (value > current.value) {
+                previous = current;
+                current = current.right;
+            } else if (value < current.value) {
+                previous = current;
+                current = current.left;
+            } else { // we have found the element
+                /** if element to delete has zero children remove reference to node **/
+                if (!current.right && !current.left) {
+                    if (previous.left.value === value) {
+                        previous.left = null;
+                    } else if (previous.right.value === value) {
+                        previous.right = null;
+                    }
+                    return;
+                }
+                return;
+            }
+
+        }
+    }
     /** depth first traversals **/
     /** Traverse tree in order, we process the node we are currently on then move to its children 
      * Deep copy of BST, process node, then its children **/
