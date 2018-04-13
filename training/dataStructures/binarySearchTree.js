@@ -103,10 +103,36 @@ class BinarySearchTree {
             } else { // we have found the element
                 /** if element to delete has zero children remove reference to node **/
                 if (!current.right && !current.left) {
-                    if (previous.left.value === value) {
+                    if (previous.left && previous.left.value === value) {
                         previous.left = null;
-                    } else if (previous.right.value === value) {
+                    } else if (previous.right && previous.right.value === value) {
                         previous.right = null;
+                    }
+                    return;
+                    /** if element to delete has one child **/
+                } else if ((current.right && !current.left) || (!current.right && current.left)) {
+                    /** if one right child **/
+                    if (current.right && !current.left) {
+                        /** if the right child of the previous element is the element to be removed **/
+                        if (previous.right && previous.right.value === current.value) {
+                            /** set the right child of the previous element to right child of the element to be removed **/
+                            previous.right = current.right;
+                        } else {
+                            /** we are replacing the left child of the previous element, 
+                             * set the right child of the element to be removed to the left previous child **/
+                            previous.left = current.right;
+                        }
+                    }
+                    /** if one left child **/
+                    if (!current.right && current.left) {
+                        /** if the left child of the previous element is the element to be removed **/
+                        if (previous.left && previous.left.value === current.value) {
+                            /** set the left child of the previous element to the left child of the element to be removed **/
+                            previous.left = current.left
+                        } else {
+                            /** we are replacing the right child of the previous element **/
+                            previous.right = current.left;
+                        }
                     }
                     return;
                 }
