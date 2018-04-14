@@ -135,11 +135,28 @@ class BinarySearchTree {
                         }
                     }
                     return;
+                } else if (current.right && current.left) {
+                    /** find the min node in the right subtree of node to be deleted and cache reference to it
+                     * ( node's in-order successor is its right subtree's left-most child ) **/
+                    let minNode = this.findMinNode(current.right);
+                    /** recursively call delete on the minimum node to remove it.  This min node will either have no children or one child
+                     * we can call our delete recursivly to remove it based on the above conditions **/
+                    this.delete(minNode.value)
+                    /** set the node to remove's value to the minimum nodes value **/
+                    current.value = minNode.value;
                 }
                 return;
             }
-
         }
+        return
+    }
+    /** finds min node in right subtree **/
+    findMinNode(rightSubTreeRoot) {
+        let minNode = rightSubTreeRoot;
+        while (minNode.left) {
+            minNode = rightSubTreeRoot.left;
+        }
+        return minNode;
     }
     /** depth first traversals **/
     /** Traverse tree in order, we process the node we are currently on then move to its children 
