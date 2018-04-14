@@ -161,7 +161,7 @@ class BinarySearchTree {
     /** depth first traversals **/
     /** Traverse tree in order, we process the node we are currently on then move to its children 
      * Deep copy of BST, process node, then its children **/
-    preorderTraversal(node = this.root, array = []) {
+    preorderTraversal(node, array = []) {
         /** if we are at the end of a leaf with no children, return the array **/
         if (!node) {
             return array;
@@ -176,7 +176,7 @@ class BinarySearchTree {
     }
     /** process left subtree and then right subtree, returns sorted array 
      * Sorted List from BST**/
-    inorderTraversal(node = this.root, array = []) {
+    inorderTraversal(node, array = []) {
         if (!node) {
             return array;
         }
@@ -191,7 +191,7 @@ class BinarySearchTree {
     /** visits all children in left and right subtrees before processing nodes, root will always be last 
      * Deleting a BST, we process the children before the node itself
      * **/
-    postorderTraversal(node = this.root, array = []) {
+    postorderTraversal(node, array = []) {
         if(!node) {
             return array;
         }
@@ -203,13 +203,13 @@ class BinarySearchTree {
     /** add values to the array by level
      * we use a queue inorder to store references to the children of each node 
      * Beacuse queue are FIFO we can visit the nodes at each level in order **/
-    breadthFirstTraverse() {
-        if (!this.root) {
+    breadthFirstTraverse(node) {
+        if (!node) {
             return;
         }
         let queue = new Queue();
         let array = [];
-        queue.enqueue(this.root);
+        queue.enqueue(node);
         while(queue.length) {
             let current = queue.dequeue();
             if (current.left) {
