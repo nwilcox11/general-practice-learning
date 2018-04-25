@@ -224,4 +224,24 @@ class BinarySearchTree {
     }
 }
 
-module.exports = BinarySearchTree;
+function isValid(node, minVal, maxVal) {
+    if (!node) {
+        return true;
+    }
+    if (node.value < minVal || node.value > maxVal) {
+        return false;
+    }
+    /**
+     * if node is left child of parent, it must be smaller than its parent.  It must pass down the value of its parent to the right subtree to make sure none
+     * of the nodes in that subtree are greater than the parent.
+     * 
+     * if node is the right child of parent it must be greater than its parent. It must pass down the value of its parent to the left subtree to make sure none
+     * of the nodes in that subtree are lesser than the parent.
+     * **/
+    return isValid(node.left, minVal, node.value) && isValid(node.right, node.value, maxVal);
+}
+
+module.exports = {
+    BinarySearchTree,
+    isValid
+};
