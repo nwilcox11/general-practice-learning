@@ -71,6 +71,30 @@ class LinkedList {
         this.length++;
         return this;
     }
+    removeNth(pos) {
+        if (pos > this.length) {
+            throw 'Out of bounds';
+        }
+        if (pos === 0) {
+            this.head = this.head.next;
+            return this;
+        }
+        let current = this.head;
+        let previous = null;
+        let index = 0;
+        while(pos !== index) {
+            previous = current;
+            current = current.next;
+            index++;
+        }
+        previous.next = current.next;
+        this.length--;
+        return this;
+    }
+
+    findNthToLast() {
+
+    }
 
 }
 
