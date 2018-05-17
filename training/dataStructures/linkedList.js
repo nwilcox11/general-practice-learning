@@ -91,9 +91,20 @@ class LinkedList {
         this.length--;
         return this;
     }
-
-    findNthToLast() {
-
+    // find the node n positions from the end
+    findNthFromLast(n) {
+        if (n > this.length) {
+            throw 'Out of bounds';
+        }
+        const nth = (this.length - n);
+        let current = this.head;
+        let previous = null;
+        let index = 0;
+        while(nth !== index) {
+            current = current.next;
+            index++;
+        }
+        return current;
     }
 
 }
