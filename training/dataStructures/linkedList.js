@@ -107,6 +107,25 @@ class LinkedList {
         return current;
     }
 
+    deleteNode(value) {
+        // if value is head
+        if (this.head.value === value) {
+            this.head = this.head.next;
+            return this;
+        }
+        let current = this.head;
+        let previous = null;
+        while(current) {
+            if (current.value === value) {
+                previous.next = current.next
+                this.length--;
+                return this;
+            }
+            previous = current;
+            current = current.next;
+        }
+        return 'Node not found';
+    }
 }
 
 module.exports = LinkedList;
