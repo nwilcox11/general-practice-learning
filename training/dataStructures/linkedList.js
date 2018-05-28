@@ -106,7 +106,6 @@ class LinkedList {
         }
         return current;
     }
-
     deleteNode(value) {
         // if value is head
         if (this.head.value === value) {
@@ -125,6 +124,19 @@ class LinkedList {
             current = current.next;
         }
         return 'Node not found';
+    }
+
+    reverseList() {
+        let current = this.head;
+        let reversedList = null;        
+        while(current) {
+            let restOfList = current.next;
+            current.next = reversedList;
+            reversedList = current;
+            current = restOfList;
+        }
+        this.head = reversedList;
+        return this;
     }
 }
 
