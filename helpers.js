@@ -13,6 +13,19 @@ function partial(fn, ...initialArgs) {
 }
 
 /**
+ * @param{function}
+ * @param{*}
+ * @returns{Function}
+ * 
+ * Invokes partially applied function with partially applied args in the right most position
+ * **/
+function partialRight(fn, ...initialArgs) {
+    return function(...laterArgs) {
+        return fn(...laterArgs, ...initialArgs);
+    }
+}
+
+/**
  * @param{String} label
  * @param{*}
  * 
