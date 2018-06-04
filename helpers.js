@@ -34,6 +34,19 @@ function compose(...fns) {
     });
 }
 /**
+ * Eager Compose
+ * **/
+function composeEager(...fns) {
+    return function(result) {
+        let funcs = [...fns];
+
+        while(funcs.length > 0) {
+            result = funcs.pop()(result);
+        }
+        return result;
+    }
+}
+/**
  * @param{function}
  * @param{*}
  * @returns{Function}
@@ -88,5 +101,6 @@ module.exports = {
     logger,
     unary,
     identity,
-    partialRight
+    partialRight,
+    compose
 };
