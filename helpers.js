@@ -13,6 +13,27 @@ function partial(fn, ...initialArgs) {
 }
 
 /**
+ * @param{Function}
+ * @returns {Function}
+ * 
+ * --lazy compose--
+ * 
+ * Composes a list of functions which will execute 'right to left' or inner to outer
+ * Instead of calculating the result at each iteration and passing it along to the next function,
+ * Lazy compose will run the reduce once at composition time and defer all calculations.
+ * 
+ * Each iteration of the reduction is a more wrapped function
+ * When the final composed function that is returned from compose is called with one or more arguments
+ * all the levels of the big nested function return by reduce are called from innermost to outermost
+ * **/
+function compose(...fns) {
+    return fns.reduceRight((fn1, fn2) => {
+        return function(...args) {
+            return fn2(fn1(...args));
+        }
+    });
+}
+/**
  * @param{function}
  * @param{*}
  * @returns{Function}
@@ -23,18 +44,6 @@ function partialRight(fn, ...initialArgs) {
     return function(...laterArgs) {
         return fn(...laterArgs, ...initialArgs);
     }
-}
-
-/**
- * @param{String} label
- * @param{*}
- * 
- * Recieves a label and an item to be logged.  
- * It Stringifies and logs to the console with 4 spaces formatting
- * **/
-
-function logger(label, toBeLogged) {
-    console.log(label, JSON.stringify(toBeLogged, null, 4));
 }
 
 /**
@@ -63,9 +72,21 @@ function identity(value) {
     return value;
 }
 
+/**
+ * @param{String} label
+ * @param{*}
+ * 
+ * Recieves a label and an item to be logged.  
+ * It Stringifies and logs to the console with 4 spaces formatting
+ * **/
+function logger(label, toBeLogged) {
+    console.log(label, JSON.stringify(toBeLogged, null, 4));
+}
+
 module.exports = {
     partial,
     logger,
     unary,
-    identity
+    identity,
+    partialRight
 };
