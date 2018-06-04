@@ -38,8 +38,21 @@ function unary(fn) {
         return fn(arg);
     }
 }
+
+/**
+ * @param{*} value
+ * @returns{*}
+ * 
+ * Utility accepts any value and returns the same value
+ * Because js will coerce a value to true or false this can be used as the predicate in a filter
+ * **/
+function identity(value) {
+    return value;
+}
+
 module.exports = {
     partial,
     logger,
-    unary
+    unary,
+    identity
 };
